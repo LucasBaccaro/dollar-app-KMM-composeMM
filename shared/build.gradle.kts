@@ -3,6 +3,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("kotlinx-serialization")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -17,7 +18,8 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "shared"
-            isStatic = true
+            export("dev.icerock.moko:resources:0.23.0")
+            export("dev.icerock.moko:graphics:0.9.0")
         }
     }
 
@@ -45,9 +47,12 @@ kotlin {
                 //navigation & viewmodels
                 implementation("moe.tlaster:precompose:1.5.1")
                 implementation("moe.tlaster:precompose-viewmodel:1.5.1")
+                //moko
+                api("dev.icerock.moko:resources:0.22.3")
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
@@ -72,6 +77,7 @@ kotlin {
             }
         }
         val desktopMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation(compose.desktop.common)
             }
@@ -97,4 +103,14 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.myapplication.common"
+}
+
+dependencies {
+    commonMainApi("dev.icerock.moko:resources:0.23.0")
+    commonMainApi("dev.icerock.moko:resources-compose:0.23.0")
+    commonTestImplementation("dev.icerock.moko:resources-test:0.23.0")
 }
