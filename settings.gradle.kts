@@ -23,7 +23,7 @@ pluginManagement {
 
         id("com.android.application").version(agpVersion)
         id("com.android.library").version(agpVersion)
-        id("org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
+
         id("org.jetbrains.compose").version(composeVersion)
     }
 }

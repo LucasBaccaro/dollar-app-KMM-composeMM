@@ -5,12 +5,4 @@ plugins {
     id("com.android.application").apply(false)
     id("com.android.library").apply(false)
     id("org.jetbrains.compose").apply(false)
-    id("org.jetbrains.kotlin.plugin.serialization").apply(false)
-    id("dev.icerock.mobile.multiplatform-resources").version("0.23.0").apply(false)
-}
-
-buildscript {
-    dependencies {
-        classpath("dev.icerock.moko:resources-generator:0.23.0")
-    }
 }
