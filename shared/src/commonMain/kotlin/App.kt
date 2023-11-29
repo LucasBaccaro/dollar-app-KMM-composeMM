@@ -12,8 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.myapplication.common.MR
-import dev.icerock.moko.resources.compose.stringResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -30,7 +28,12 @@ fun App() {
             }) {
                 Text(greetingText)
             }
-            Text(stringResource(MR.strings.hello))
+            AnimatedVisibility(showImage) {
+                Image(
+                    painterResource("compose-multiplatform.xml"),
+                    contentDescription = "Compose Multiplatform icon"
+                )
+            }
         }
     }
 }
