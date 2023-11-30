@@ -12,6 +12,12 @@ kotlin {
                 implementation(project(":shared"))
             }
         }
+        val commonMain by getting {
+            dependencies {
+                implementation("moe.tlaster:precompose:1.5.1")
+                implementation("moe.tlaster:precompose-viewmodel:1.5.1")
+            }
+        }
     }
 }
 
