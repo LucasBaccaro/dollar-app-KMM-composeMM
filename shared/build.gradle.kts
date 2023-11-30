@@ -46,8 +46,10 @@ kotlin {
                 //images
                 api("io.github.qdsfdhvh:image-loader:1.7.1")
                 //navigation & viewmodels
-                implementation("moe.tlaster:precompose:1.5.1")
-                implementation("moe.tlaster:precompose-viewmodel:1.5.1")
+                api("moe.tlaster:precompose:1.5.7")
+                api("moe.tlaster:precompose-molecule:1.5.7") // For Molecule intergration
+                api("moe.tlaster:precompose-viewmodel:1.5.7") // For ViewModel intergration
+                api("moe.tlaster:precompose-koin:1.5.7") // For Koin intergration
                 api(compose.animation)
                 //moko
                 api("dev.icerock.moko:resources:0.22.3")
