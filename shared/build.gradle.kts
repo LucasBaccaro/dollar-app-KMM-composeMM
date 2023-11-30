@@ -32,7 +32,7 @@ kotlin {
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-
+                api(compose.animation)
                 //ktor
                 implementation("io.ktor:ktor-client-core:2.3.3")
                 implementation("io.ktor:ktor-client-content-negotiation:2.3.3")
@@ -47,10 +47,8 @@ kotlin {
                 api("io.github.qdsfdhvh:image-loader:1.7.1")
                 //navigation & viewmodels
                 api("moe.tlaster:precompose:1.5.7")
-                api("moe.tlaster:precompose-molecule:1.5.7") // For Molecule intergration
-                api("moe.tlaster:precompose-viewmodel:1.5.7") // For ViewModel intergration
-                api("moe.tlaster:precompose-koin:1.5.7") // For Koin intergration
-                api(compose.animation)
+                api("moe.tlaster:precompose-viewmodel:1.5.7")
+                api("moe.tlaster:precompose-koin:1.5.7")
                 //moko
                 api("dev.icerock.moko:resources:0.22.3")
             }
