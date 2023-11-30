@@ -28,7 +28,8 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
@@ -47,6 +48,7 @@ kotlin {
                 //navigation & viewmodels
                 implementation("moe.tlaster:precompose:1.5.1")
                 implementation("moe.tlaster:precompose-viewmodel:1.5.1")
+                api(compose.animation)
                 //moko
                 api("dev.icerock.moko:resources:0.22.3")
             }
