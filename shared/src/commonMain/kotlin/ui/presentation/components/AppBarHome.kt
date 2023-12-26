@@ -27,7 +27,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.myapplication.common.MR
-import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -36,10 +35,8 @@ fun AppBarHome() {
     val paddingBottom = if (getPlatformName() == "Android") 0.dp else 10.dp
 
     Column(Modifier.padding(start = 24.dp, top = paddingTop, bottom = paddingBottom)) {
-        Text(stringResource(MR.strings.hello))
-        Image(painter = painterResource(MR.images.sseguridad), contentDescription = null)
         Text(
-            text = "Lucas Baccaro  ",
+            text = stringResource(MR.strings.name),
             style = TextStyle(
                 fontSize = 18.sp,
                 lineHeight = 32.sp,
@@ -50,7 +47,7 @@ fun AppBarHome() {
         )
 
         Text(
-            text = "Welcome Back 👋",
+            text = stringResource(MR.strings.welcome),
             style = TextStyle(
                 fontSize = 12.sp,
                 lineHeight = 24.sp,
@@ -122,7 +119,7 @@ fun CustomCard(
                     )
                 )
                 Text(
-                    text = "Comprar ahora",
+                    text = stringResource(MR.strings.buy_now),
                     style = TextStyle(
                         fontSize = 12.sp,
                         lineHeight = 16.sp,

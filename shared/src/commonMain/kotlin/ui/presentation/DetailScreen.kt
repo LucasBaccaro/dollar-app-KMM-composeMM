@@ -1,6 +1,3 @@
-package com.dolarapp.ui.presentation
-
-import DetailAppBar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,6 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dolarapp.ui.presentation.Background
+import com.myapplication.common.MR
+import dev.icerock.moko.resources.compose.stringResource
 import getPlatformName
 import moe.tlaster.precompose.navigation.BackStackEntry
 import moe.tlaster.precompose.navigation.Navigator
@@ -47,7 +47,7 @@ fun DetailScreen(backStackEntry: BackStackEntry, navigator: Navigator) {
             Spacer(Modifier.height(35.dp))
             Text(
                 modifier = Modifier.padding(start = 24.dp),
-                text = "Estadísticas",
+                text = stringResource(MR.strings.stats),
                 style = TextStyle(
                     fontSize = 18.sp,
                     lineHeight = 24.sp,
@@ -56,9 +56,9 @@ fun DetailScreen(backStackEntry: BackStackEntry, navigator: Navigator) {
                 )
             )
             Spacer(Modifier.height(10.dp))
-            ValueRow("Compra", compra.toString())
-            ValueRow("Venta", venta.toString())
-            ValueRow("Última actualización", fechaActualizacion)
+            ValueRow(stringResource(MR.strings.buy),compra.toString())
+            ValueRow(stringResource(MR.strings.sell), venta.toString())
+            ValueRow(stringResource(MR.strings.last_update), fechaActualizacion)
         }
 
         val paddingBottom = if (getPlatformName() == "Android") 20.dp else 40.dp
@@ -79,7 +79,7 @@ fun DetailScreen(backStackEntry: BackStackEntry, navigator: Navigator) {
                 )
             ) {
                 Text(
-                    text = "Vender",
+                    text = stringResource(MR.strings.sell),
                     style = TextStyle(
                         fontSize = 14.sp,
                         lineHeight = 16.sp,
@@ -99,7 +99,7 @@ fun DetailScreen(backStackEntry: BackStackEntry, navigator: Navigator) {
                 )
             ) {
                 Text(
-                    text = "Comprar",
+                    text = stringResource(MR.strings.buy),
                     style = TextStyle(
                         fontSize = 14.sp,
                         lineHeight = 16.sp,

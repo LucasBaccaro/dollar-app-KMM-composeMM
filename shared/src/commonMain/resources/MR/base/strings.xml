@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <string name="hello">Hello</string>
+    <string name="money">Divisas</string>
+    <string name="unknown">Desconocido</string>
+    <string name="more">Ver mas</string>
+    <string name="stats">Estadisticas</string>
+    <string name="buy">Compra</string>
+    <string name="sell">Venta</string>
+    <string name="last_update">Última actualización</string>
+    <string name="name">Lucas Baccaro</string>
+    <string name="welcome">Welcome Back 👋</string>
+    <string name="buy_now">Comprar ahora</string>
+    <string name="back">Atras</string>
+    <string name="error">Error al cargar los datos</string>
 </resources>

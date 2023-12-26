@@ -24,11 +24,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import com.myapplication.common.MR
+import dev.icerock.moko.resources.compose.stringResource
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.koin.koinViewModel
 import moe.tlaster.precompose.navigation.Navigator
 import ui.DollarViewModel
+import ui.presentation.components.Center
 
 // Definición de la paleta de colores en hexadecimales
 val VerdeClaro = Color(0xFFA5D6A7)
@@ -58,7 +60,7 @@ fun HomeScreen(navigator: Navigator) {
 
                 state.isFailure -> {
                     Center {
-                        Text("Error al cargar los datos")
+                        Text(text = stringResource(MR.strings.error))
                     }
                 }
 
@@ -70,7 +72,7 @@ fun HomeScreen(navigator: Navigator) {
                     ) {
                         item {
                             ProfileImage()
-                            TextRow1()
+                            TextRow()
                         }
                         items(state.data) { dolar ->
                             CustomCard(
@@ -88,7 +90,7 @@ fun HomeScreen(navigator: Navigator) {
 }
 
 @Composable
-fun TextRow1() {
+fun TextRow() {
     Row(
         modifier = Modifier
             .padding(horizontal = 24.dp)
@@ -96,7 +98,7 @@ fun TextRow1() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Divisas",
+            text = stringResource(MR.strings.back),
             style = TextStyle(
                 fontSize = 18.sp,
                 lineHeight = 32.sp,
@@ -107,7 +109,7 @@ fun TextRow1() {
         )
 
         Text(
-            text = "Ver mas",
+            text = stringResource(MR.strings.more),
             style = TextStyle(
                 fontSize = 12.sp,
                 fontWeight = FontWeight(500),
@@ -116,16 +118,6 @@ fun TextRow1() {
                 letterSpacing = 0.24.sp,
             )
         )
-    }
-}
-
-@Composable
-fun Center(content: @Composable () -> Unit) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        content()
     }
 }
 

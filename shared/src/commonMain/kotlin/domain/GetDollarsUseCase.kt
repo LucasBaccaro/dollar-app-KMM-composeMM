@@ -5,9 +5,9 @@ import core.data.DollarRepository
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import Result
-import mapSuccess
-import toSuccess
+import core.data.Result
+import core.data.mapSuccess
+import core.data.toSuccess
 
 
 class GetDollarsUseCase(

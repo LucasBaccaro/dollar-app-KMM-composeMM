@@ -1,6 +1,5 @@
 
 import androidx.compose.runtime.Composable
-import com.dolarapp.ui.presentation.DetailScreen
 import com.dolarapp.ui.presentation.HomeScreen
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.rememberNavigator
@@ -21,7 +20,6 @@ fun Navigation() {
         ) {
             HomeScreen(navigator)
         }
-
         scene("/detail") { backStackEntry ->
             DetailScreen(backStackEntry, navigator)
         }
