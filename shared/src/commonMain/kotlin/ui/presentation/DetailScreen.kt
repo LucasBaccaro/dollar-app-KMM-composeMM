@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import com.dolarapp.ui.presentation.Background
 import com.myapplication.common.MR
 import dev.icerock.moko.resources.compose.stringResource
-import getPlatformName
 import moe.tlaster.precompose.navigation.BackStackEntry
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.query
@@ -61,7 +60,12 @@ fun DetailScreen(backStackEntry: BackStackEntry, navigator: Navigator) {
             ValueRow(stringResource(MR.strings.last_update), fechaActualizacion)
         }
 
-        val paddingBottom = if (getPlatformName() == "Android") 20.dp else 40.dp
+        val paddingBottom = when (getPlatformName()) {
+            "Desktop" -> 0.dp
+            "Android" -> 20.dp
+            else -> 40.dp
+        }
+
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
