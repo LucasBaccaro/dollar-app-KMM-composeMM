@@ -1,4 +1,5 @@
 package ui
+
 import domain.GetDollarsUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,5 +1,6 @@
 package core.network
 
+import core.data.DollarRepository.Companion.URL
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -10,7 +11,6 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-
 internal fun ktorHttpClient() = HttpClient {
 
     install(ContentNegotiation) {
@@ -25,7 +25,7 @@ internal fun ktorHttpClient() = HttpClient {
     }
 
     defaultRequest {
-        url("https://www.dolarapi.com/v1/dolares")
+        url(URL)
         url {
             protocol = URLProtocol.HTTPS
         }

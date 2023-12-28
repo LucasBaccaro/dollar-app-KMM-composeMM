@@ -16,5 +16,4 @@ fun MainApp() {
     Navigation()
 }
 
-
 expect fun getPlatformName(): String

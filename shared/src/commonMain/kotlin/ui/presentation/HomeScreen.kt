@@ -1,8 +1,3 @@
-package com.dolarapp.ui.presentation
-
-import AppBarHome
-import CustomCard
-import ProfileImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,15 +26,6 @@ import moe.tlaster.precompose.koin.koinViewModel
 import moe.tlaster.precompose.navigation.Navigator
 import ui.DollarViewModel
 import ui.presentation.components.Center
-
-// Definición de la paleta de colores en hexadecimales
-val VerdeClaro = Color(0xFFA5D6A7)
-val VerdeOscuro = Color(0xFF2E7D32)
-val VerdeFondo = Color(0xFFE8F5E9)
-val BlancoTexto = Color(0xFFFFFFFF)
-val NegroTexto = Color(0xFF000000)
-val Background = Color(0xFFF5F8FE)
-
 @Composable
 fun HomeScreen(navigator: Navigator) {
     val viewModel = koinViewModel(DollarViewModel::class)
@@ -54,7 +40,7 @@ fun HomeScreen(navigator: Navigator) {
             when {
                 state.isLoading -> {
                     Center {
-                        CircularProgressIndicator(color = VerdeClaro)
+                        CircularProgressIndicator(color = Color(0xFFA5D6A7))
                     }
                 }
 
@@ -63,7 +49,6 @@ fun HomeScreen(navigator: Navigator) {
                         Text(text = stringResource(MR.strings.error))
                     }
                 }
-
                 else -> {
                     LazyColumn(
                         modifier = Modifier

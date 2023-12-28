@@ -13,5 +13,4 @@ val sharedModules = module {
     single { GetDollarsUseCase(dollarRepository = get()) }
     single { DollarViewModel(getDollarsUseCase = get()) }
 }
-
 fun appModule() = listOf(sharedModules)
