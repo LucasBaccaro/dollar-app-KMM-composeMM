@@ -1,8 +1,3 @@
-package com.dolarapp.ui.presentation
-
-import AppBarHome
-import CustomCard
-import ProfileImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,20 +19,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import com.myapplication.common.MR
+import dev.icerock.moko.resources.compose.stringResource
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.koin.koinViewModel
 import moe.tlaster.precompose.navigation.Navigator
 import ui.DollarViewModel
-
-// Definición de la paleta de colores en hexadecimales
-val VerdeClaro = Color(0xFFA5D6A7)
-val VerdeOscuro = Color(0xFF2E7D32)
-val VerdeFondo = Color(0xFFE8F5E9)
-val BlancoTexto = Color(0xFFFFFFFF)
-val NegroTexto = Color(0xFF000000)
-val Background = Color(0xFFF5F8FE)
-
+import ui.presentation.components.Center
 @Composable
 fun HomeScreen(navigator: Navigator) {
     val viewModel = koinViewModel(DollarViewModel::class)
@@ -52,16 +40,15 @@ fun HomeScreen(navigator: Navigator) {
             when {
                 state.isLoading -> {
                     Center {
-                        CircularProgressIndicator(color = VerdeClaro)
+                        CircularProgressIndicator(color = Color(0xFFA5D6A7))
                     }
                 }
 
                 state.isFailure -> {
                     Center {
-                        Text("Error al cargar los datos")
+                        Text(text = stringResource(MR.strings.error))
                     }
                 }
-
                 else -> {
                     LazyColumn(
                         modifier = Modifier
@@ -70,7 +57,7 @@ fun HomeScreen(navigator: Navigator) {
                     ) {
                         item {
                             ProfileImage()
-                            TextRow1()
+                            TextRow()
                         }
                         items(state.data) { dolar ->
                             CustomCard(
@@ -88,7 +75,7 @@ fun HomeScreen(navigator: Navigator) {
 }
 
 @Composable
-fun TextRow1() {
+fun TextRow() {
     Row(
         modifier = Modifier
             .padding(horizontal = 24.dp)
@@ -96,7 +83,7 @@ fun TextRow1() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Divisas",
+            text = stringResource(MR.strings.back),
             style = TextStyle(
                 fontSize = 18.sp,
                 lineHeight = 32.sp,
@@ -107,7 +94,7 @@ fun TextRow1() {
         )
 
         Text(
-            text = "Ver mas",
+            text = stringResource(MR.strings.more),
             style = TextStyle(
                 fontSize = 12.sp,
                 fontWeight = FontWeight(500),
@@ -116,16 +103,6 @@ fun TextRow1() {
                 letterSpacing = 0.24.sp,
             )
         )
-    }
-}
-
-@Composable
-fun Center(content: @Composable () -> Unit) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        content()
     }
 }
 

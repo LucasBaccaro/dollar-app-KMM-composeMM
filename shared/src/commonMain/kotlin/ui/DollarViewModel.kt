@@ -1,4 +1,5 @@
 package ui
+
 import domain.GetDollarsUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -7,7 +8,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
-import Result
+import core.data.Result
 
 class DollarViewModel(
     private val getDollarsUseCase: GetDollarsUseCase,

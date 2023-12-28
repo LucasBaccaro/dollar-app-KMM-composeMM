@@ -1,8 +1,8 @@
-
-
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,20 +13,27 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dolarapp.ui.presentation.Background
+import com.myapplication.common.MR
+import dev.icerock.moko.resources.compose.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailAppBar(onClick: () -> Unit, title: String) {
-    val paddingTop = if (getPlatformName() == "Android") 5.dp else 35.dp
+    val paddingTop = when (getPlatformName()) {
+        "iOS" -> 35.dp
+        "Android" -> 5.dp
+        else -> 0.dp
+    }
     Box(modifier = Modifier.padding(top = paddingTop)) {
         TopAppBar(
-            colors = TopAppBarDefaults.topAppBarColors(Background),
+            colors = TopAppBarDefaults.topAppBarColors(Color(0xFFF5F8FE)),
             title = {
                 Text(
                     text = title,
@@ -49,14 +56,10 @@ fun DetailAppBar(onClick: () -> Unit, title: String) {
                 }
             },
             actions = {
-                /*NetworkImage(
-                    imageUrl = "https://media.licdn.com/dms/image/C4D03AQGZ8_6kVQ7LxA/profile-displayphoto-shrink_800_800/0/1661524113725?e=1705536000&v=beta&t=2IZMZB56oUXKN_yxgUk5cYmyD8EbDA1qU-88eNgqC7U",
-                    contentDescription = "Icono de dólar",
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .size(40.dp),
-                    contentScale = ContentScale.Fit
-                )*/
+                Image(painter = painterResource(MR.images.profile), contentDescription = null,modifier = Modifier
+                    .clip(CircleShape)
+                    .size(40.dp),
+                    contentScale = ContentScale.Fit)
             },
         )
     }

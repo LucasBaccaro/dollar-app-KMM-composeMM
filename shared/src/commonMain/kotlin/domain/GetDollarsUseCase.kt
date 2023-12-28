@@ -5,11 +5,9 @@ import core.data.DollarRepository
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import Result
-import mapSuccess
-import toSuccess
-
-
+import core.data.Result
+import core.data.mapSuccess
+import core.data.toSuccess
 class GetDollarsUseCase(
     private val dollarRepository: DollarRepository,
 ) {
@@ -19,7 +17,6 @@ class GetDollarsUseCase(
         }
     }
 }
-
 fun DolarDTOItem.asDollarModel(): DolarModel {
     return DolarModel(
         casa = this.casa,
@@ -30,8 +27,6 @@ fun DolarDTOItem.asDollarModel(): DolarModel {
         venta = "$ ${this.venta}"
     )
 }
-
-
 private fun formatterDate(fecha: String): String {
     val originalString = fecha
     val instant = Instant.parse(originalString)

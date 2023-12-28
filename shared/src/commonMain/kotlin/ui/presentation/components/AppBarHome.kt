@@ -1,5 +1,3 @@
-
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -21,7 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,14 +33,12 @@ import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun AppBarHome() {
-    val paddingTop = if (getPlatformName() == "Android") 5.dp else 35.dp
-    val paddingBottom = if (getPlatformName() == "Android") 0.dp else 10.dp
+    val paddingTop = if (getPlatformName() == "Android" || getPlatformName() == "Desktop" ) 5.dp else 35.dp
+    val paddingBottom = if (getPlatformName() == "Android" || getPlatformName() == "Desktop" ) 0.dp else 10.dp
 
     Column(Modifier.padding(start = 24.dp, top = paddingTop, bottom = paddingBottom)) {
-        Text(stringResource(MR.strings.hello))
-        Image(painter = painterResource(MR.images.sseguridad), contentDescription = null)
         Text(
-            text = "Lucas Baccaro  ",
+            text = stringResource(MR.strings.name),
             style = TextStyle(
                 fontSize = 18.sp,
                 lineHeight = 32.sp,
@@ -50,7 +49,7 @@ fun AppBarHome() {
         )
 
         Text(
-            text = "Welcome Back 👋",
+            text = stringResource(MR.strings.welcome),
             style = TextStyle(
                 fontSize = 12.sp,
                 lineHeight = 24.sp,
@@ -68,16 +67,12 @@ fun ProfileImage() {
         contentAlignment = Alignment.TopCenter,
         modifier = Modifier
             .padding(horizontal = 25.dp, vertical = 35.dp)
-            .fillMaxWidth() // Establece el tamaño de la caja al tamaño de la imagen
+            .fillMaxWidth()
     ) {
-        /*Image(
-            painter = "https://media.licdn.com/dms/image/C4D03AQGZ8_6kVQ7LxA/profile-displayphoto-shrink_800_800/0/1661524113725?e=1705536000&v=beta&t=2IZMZB56oUXKN_yxgUk5cYmyD8EbDA1qU-88eNgqC7U",
-            contentDescription = "Icono de dólar",
-            modifier = Modifier
-                .clip(RoundedCornerShape(10.dp)) // Redondea las esquinas del borde
-                .size(150.dp),
-            contentScale = ContentScale.Fit
-        )*/
+        Image(painter = painterResource(MR.images.profile), contentDescription = null,modifier = Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .size(150.dp),
+            contentScale = ContentScale.Fit)
     }
 }
 
@@ -122,7 +117,7 @@ fun CustomCard(
                     )
                 )
                 Text(
-                    text = "Comprar ahora",
+                    text = stringResource(MR.strings.buy_now),
                     style = TextStyle(
                         fontSize = 12.sp,
                         lineHeight = 16.sp,

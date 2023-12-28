@@ -1,3 +1,4 @@
+package core.data
 sealed class Result<out T : Any> {
 
     data class Success<out T : Any>(val data: T) : Result<T>()
@@ -10,7 +11,6 @@ sealed class Result<out T : Any> {
         }
     }
 }
-
 suspend inline fun <T : Any, R : Any> Result<T>.mapSuccess(
     crossinline mapper: suspend (Result.Success<T>) -> Result<R>
 ): Result<R> {
@@ -19,10 +19,7 @@ suspend inline fun <T : Any, R : Any> Result<T>.mapSuccess(
         is Result.Error -> this
     }
 }
-
-
 fun <T : Any> T.toSuccess() = Result.Success(this)
-
 inline fun <T : Any> Result<T>.orElse(otherwise: (Result.Error) -> T): T {
     return when (this) {
         is Result.Error -> otherwise(this)
